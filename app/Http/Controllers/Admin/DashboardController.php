@@ -15,6 +15,6 @@ class DashboardController extends BaseController
      */
     public function show()
     {
-        //
+        return view('admin.dashboard.show');
     }
 }
