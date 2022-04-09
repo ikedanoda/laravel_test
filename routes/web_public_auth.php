@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Public\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Public\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Public\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Public\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Public\Auth\NewPasswordController;
+use App\Http\Controllers\Public\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Public\Auth\RegisteredUserController;
+use App\Http\Controllers\Public\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -34,7 +34,7 @@ Route::middleware('guest')->group(function () {
                 ->name('password.update');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:user')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
 
